@@ -137,19 +137,18 @@
     }
 
     .hero {
-      min-height: 720px;
+      min-height: clamp(480px, 34vw, 640px);
       position: relative;
-      display: grid;
-      align-items: end;
-      padding: 120px 56px 86px;
       overflow: hidden;
+      background-color: #020304;
       background-image:
-        linear-gradient(90deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.08) 34%, rgba(0,0,0,0.48) 100%),
-        linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 54%, var(--bg) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.35) 100%),
         url("assets/hero.png");
-      background-size: cover;
-      background-position: center;
+      background-size: min(1800px, 100vw) auto;
+      background-repeat: no-repeat;
+      background-position: center center;
       border-bottom: 1px solid var(--line2);
+      box-shadow: inset 0 -90px 110px rgba(0,0,0,0.55);
     }
 
     .hero::before {
@@ -157,38 +156,39 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 24% 44%, rgba(255,255,255,0.08), transparent 18rem),
-        linear-gradient(90deg, rgba(0,0,0,0.08), transparent 42%, rgba(0,0,0,0.50));
+        radial-gradient(circle at 16% 46%, rgba(255,255,255,0.06), transparent 18rem),
+        radial-gradient(circle at 86% 30%, rgba(145,200,255,0.06), transparent 18rem),
+        linear-gradient(90deg, rgba(0,0,0,0.08), transparent 26%, transparent 72%, rgba(0,0,0,0.22));
       pointer-events: none;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 150px;
+      background: linear-gradient(180deg, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .intro-strip {
       max-width: 1180px;
-      width: 100%;
       margin: 0 auto;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
+      padding: 46px 28px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 34px;
+      align-items: end;
     }
 
-    .hero-mark {
-      display: none;
-    }
-
-    .hero-copy {
-      width: min(520px, 100%);
-      padding: 28px 30px 30px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background:
-        linear-gradient(135deg, rgba(5,6,9,0.88), rgba(5,6,9,0.62));
-      box-shadow: 0 28px 90px rgba(0,0,0,0.58);
-      backdrop-filter: blur(10px);
+    .intro-copy {
+      position: relative;
     }
 
     .eyebrow {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--blue);
       letter-spacing: 0.36em;
       text-transform: uppercase;
@@ -199,7 +199,7 @@
     h1 {
       margin: 0;
       font-family: var(--serif);
-      font-size: clamp(34px, 4.3vw, 58px);
+      font-size: clamp(34px, 4vw, 58px);
       line-height: 1.08;
       letter-spacing: 0.10em;
       font-weight: 400;
@@ -209,24 +209,25 @@
     .tagline {
       margin: 18px 0 0;
       font-family: var(--serif);
-      font-size: clamp(16px, 1.7vw, 22px);
+      font-size: clamp(16px, 1.45vw, 21px);
       letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.70);
     }
 
     .lead {
-      margin: 22px 0 0;
-      max-width: 580px;
-      color: rgba(255,255,255,0.74);
-      font-size: 16px;
+      margin: 20px 0 0;
+      max-width: 680px;
+      color: rgba(255,255,255,0.70);
+      font-size: 15px;
       letter-spacing: 0.06em;
     }
 
-    .hero-actions {
-      margin-top: 34px;
+    .intro-actions {
       display: flex;
+      justify-content: flex-end;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
+      padding-bottom: 4px;
     }
 
     .btn {
@@ -492,17 +493,18 @@
       }
 
       .hero {
-        min-height: 680px;
-        padding: 110px 24px 70px;
-        background-position: 34% center;
+        min-height: 420px;
+        background-size: max(960px, 100vw) auto;
+        background-position: center center;
       }
 
-      .hero-inner {
-        justify-content: center;
+      .intro-strip {
+        grid-template-columns: 1fr;
+        gap: 22px;
       }
 
-      .hero-copy {
-        width: min(560px, 100%);
+      .intro-actions {
+        justify-content: flex-start;
       }
 
       .projects,
@@ -526,12 +528,13 @@
       }
 
       .hero {
-        min-height: 720px;
-        padding-bottom: 52px;
+        min-height: 330px;
+        background-size: 980px auto;
+        background-position: center center;
       }
 
-      .hero-copy {
-        padding: 22px;
+      .intro-strip {
+        padding: 36px 20px 8px;
       }
 
       h1 {
@@ -542,7 +545,7 @@
         letter-spacing: 0.16em;
       }
 
-      .hero-actions {
+      .intro-actions {
         flex-direction: column;
       }
 
@@ -586,24 +589,21 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-mark" aria-hidden="true"></div>
+    <section class="hero" aria-label="Cross Novaris Studio key visual"></section>
 
-        <div class="hero-copy">
-          <p class="eyebrow">Cross Novaris Studio</p>
-          <h1>Creating worlds<br>beyond choice.</h1>
-          <p class="tagline">Games, tools, and stories.</p>
-          <p class="lead">
-            ゲームとツールで、物語と体験の可能性を拡張する。
-            暗闇、選択、創作、そしてAI時代の制作環境を探求するインディーゲームスタジオ。
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#games">View Games <span>›</span></a>
-            <a class="btn" href="#tools">Explore Tools <span>›</span></a>
-          </div>
-        </div>
+    <section class="intro-strip" id="studio">
+      <div class="intro-copy">
+        <p class="eyebrow">Cross Novaris Studio</p>
+        <h1>Creating worlds<br>beyond choice.</h1>
+        <p class="tagline">Games, tools, and stories.</p>
+        <p class="lead">
+          ゲームとツールで、物語と体験の可能性を拡張する。
+          暗闇、選択、創作、そしてAI時代の制作環境を探求するインディーゲームスタジオ。
+        </p>
+      </div>
+      <div class="intro-actions">
+        <a class="btn primary" href="#games">View Games <span>›</span></a>
+        <a class="btn" href="#tools">Explore Tools <span>›</span></a>
       </div>
     </section>
 
@@ -703,7 +703,7 @@
         </div>
       </article>
 
-      <article class="panel" id="studio">
+      <article class="panel" id="about">
         <div class="section-title">
           <h2>About</h2>
         </div>
