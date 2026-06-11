@@ -140,12 +140,12 @@
       min-height: 720px;
       position: relative;
       display: grid;
-      align-items: center;
-      padding: 120px 56px 80px;
+      align-items: end;
+      padding: 120px 56px 86px;
       overflow: hidden;
       background-image:
-        linear-gradient(90deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.68) 100%),
-        linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.16) 58%, var(--bg) 100%),
+        linear-gradient(90deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.08) 34%, rgba(0,0,0,0.48) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 54%, var(--bg) 100%),
         url("assets/hero.png");
       background-size: cover;
       background-position: center;
@@ -157,8 +157,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 26% 45%, rgba(255,255,255,0.10), transparent 17rem),
-        radial-gradient(circle at 76% 52%, rgba(80, 130, 255, 0.10), transparent 21rem);
+        radial-gradient(circle at 24% 44%, rgba(255,255,255,0.08), transparent 18rem),
+        linear-gradient(90deg, rgba(0,0,0,0.08), transparent 42%, rgba(0,0,0,0.50));
       pointer-events: none;
     }
 
@@ -168,21 +168,23 @@
       max-width: 1180px;
       width: 100%;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1fr);
-      gap: 44px;
-      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
     }
 
     .hero-mark {
-      width: min(36vw, 420px);
-      opacity: 0.0;
-      pointer-events: none;
+      display: none;
     }
 
     .hero-copy {
-      max-width: 720px;
-      justify-self: end;
+      width: min(520px, 100%);
+      padding: 28px 30px 30px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(135deg, rgba(5,6,9,0.88), rgba(5,6,9,0.62));
+      box-shadow: 0 28px 90px rgba(0,0,0,0.58);
+      backdrop-filter: blur(10px);
     }
 
     .eyebrow {
@@ -197,18 +199,18 @@
     h1 {
       margin: 0;
       font-family: var(--serif);
-      font-size: clamp(46px, 6vw, 84px);
-      line-height: 1.05;
-      letter-spacing: 0.075em;
+      font-size: clamp(34px, 4.3vw, 58px);
+      line-height: 1.08;
+      letter-spacing: 0.10em;
       font-weight: 400;
       text-shadow: 0 10px 42px rgba(0,0,0,0.68);
     }
 
     .tagline {
-      margin: 22px 0 0;
+      margin: 18px 0 0;
       font-family: var(--serif);
-      font-size: clamp(18px, 2vw, 28px);
-      letter-spacing: 0.28em;
+      font-size: clamp(16px, 1.7vw, 22px);
+      letter-spacing: 0.18em;
       color: rgba(255,255,255,0.72);
     }
 
@@ -260,6 +262,7 @@
       max-width: 1180px;
       margin: 0 auto;
       padding: 68px 28px 0;
+      scroll-margin-top: 92px;
     }
 
     .section-title {
@@ -489,18 +492,17 @@
       }
 
       .hero {
-        min-height: 660px;
+        min-height: 680px;
         padding: 110px 24px 70px;
-        background-position: 38% center;
+        background-position: 34% center;
       }
 
       .hero-inner {
-        grid-template-columns: 1fr;
+        justify-content: center;
       }
 
       .hero-copy {
-        justify-self: start;
-        padding-top: 180px;
+        width: min(560px, 100%);
       }
 
       .projects,
@@ -524,11 +526,16 @@
       }
 
       .hero {
-        min-height: 760px;
+        min-height: 720px;
+        padding-bottom: 52px;
+      }
+
+      .hero-copy {
+        padding: 22px;
       }
 
       h1 {
-        font-size: 42px;
+        font-size: 36px;
       }
 
       .tagline {
@@ -584,9 +591,9 @@
         <div class="hero-mark" aria-hidden="true"></div>
 
         <div class="hero-copy">
-          <p class="eyebrow">Indie Game Studio</p>
-          <h1>Cross Novaris Studio</h1>
-          <p class="tagline">Creating worlds beyond choice.</p>
+          <p class="eyebrow">Cross Novaris Studio</p>
+          <h1>Creating worlds<br>beyond choice.</h1>
+          <p class="tagline">Games, tools, and stories.</p>
           <p class="lead">
             ゲームとツールで、物語と体験の可能性を拡張する。
             暗闇、選択、創作、そしてAI時代の制作環境を探求するインディーゲームスタジオ。
