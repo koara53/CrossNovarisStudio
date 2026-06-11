@@ -11,6 +11,21 @@
   <meta name="theme-color" content="#050609" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
+  <!--
+    VISIT ANALYTICS / 訪問数カウント用メモ
+    GitHub Pages単体は静的サイトなので、サイト訪問数を自前で保存できません。
+    Cloudflare Web Analytics / Google Analytics / Plausible などの外部計測タグをここに貼る形になります。
+
+    おすすめ: Cloudflare Web Analytics
+    1. Cloudflare Dashboard > Web Analytics > Add a site
+    2. hostname に「koara53.github.io」を追加
+       ※独自ドメインに変えたら、そのドメインも追加
+    3. 発行された JS snippet を、このコメントの下あたりに貼る
+
+    例:
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"YOUR_TOKEN_HERE"}'></script>
+  -->
+
   <style>
     :root {
       --bg: #050609;
@@ -30,13 +45,9 @@
       --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -50,15 +61,8 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .site-header {
       position: fixed;
@@ -71,7 +75,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 56px;
-      background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.10));
+      background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.12));
       border-bottom: 1px solid rgba(255,255,255,0.06);
       backdrop-filter: blur(14px);
     }
@@ -94,12 +98,7 @@
       filter: drop-shadow(0 0 14px rgba(145,200,255,0.38));
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
-
+    .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
     .brand-text span:last-child {
       font-size: 9px;
       letter-spacing: 0.62em;
@@ -116,11 +115,7 @@
       color: rgba(255,255,255,0.74);
     }
 
-    .nav a {
-      position: relative;
-      padding: 8px 0;
-    }
-
+    .nav a { position: relative; padding: 8px 0; }
     .nav a::after {
       content: "";
       position: absolute;
@@ -131,10 +126,7 @@
       background: linear-gradient(90deg, var(--blue), transparent);
       transition: width 0.24s ease;
     }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
+    .nav a:hover::after { width: 100%; }
 
     .hero {
       min-height: clamp(480px, 34vw, 640px);
@@ -142,7 +134,7 @@
       overflow: hidden;
       background-color: #020304;
       background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.35) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.00) 52%, rgba(0,0,0,0.30) 100%),
         url("assets/hero.png");
       background-size: min(1800px, 100vw) auto;
       background-repeat: no-repeat;
@@ -156,9 +148,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 16% 46%, rgba(255,255,255,0.06), transparent 18rem),
-        radial-gradient(circle at 86% 30%, rgba(145,200,255,0.06), transparent 18rem),
-        linear-gradient(90deg, rgba(0,0,0,0.08), transparent 26%, transparent 72%, rgba(0,0,0,0.22));
+        radial-gradient(circle at 16% 46%, rgba(255,255,255,0.05), transparent 18rem),
+        radial-gradient(circle at 86% 30%, rgba(145,200,255,0.05), transparent 18rem),
+        linear-gradient(90deg, rgba(0,0,0,0.05), transparent 26%, transparent 72%, rgba(0,0,0,0.18));
       pointer-events: none;
     }
 
@@ -183,9 +175,7 @@
       align-items: end;
     }
 
-    .intro-copy {
-      position: relative;
-    }
+    .intro-copy { position: relative; }
 
     .eyebrow {
       margin: 0 0 16px;
@@ -266,6 +256,8 @@
       scroll-margin-top: 92px;
     }
 
+    .section.compact { padding-top: 42px; }
+
     .section-title {
       display: flex;
       align-items: center;
@@ -284,6 +276,15 @@
       color: rgba(255,255,255,0.86);
     }
 
+    .section-title .note {
+      margin: 0;
+      color: rgba(255,255,255,0.46);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
     .section-title::after {
       content: "";
       flex: 1;
@@ -292,10 +293,18 @@
       margin-left: 12px;
     }
 
-    .projects {
+    .category-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 18px;
+    }
+
+    .games-grid .card {
+      min-height: 300px;
+    }
+
+    .games-grid .card-inner {
+      min-height: 300px;
     }
 
     .card {
@@ -377,9 +386,11 @@
       font-weight: 400;
     }
 
+    .games-grid .card h3 { font-size: 34px; }
+
     .card p {
       margin: 0;
-      max-width: 310px;
+      max-width: 520px;
       color: rgba(255,255,255,0.69);
       font-size: 14px;
     }
@@ -410,10 +421,7 @@
       min-height: 220px;
     }
 
-    .news-list {
-      display: grid;
-      gap: 2px;
-    }
+    .news-list { display: grid; gap: 2px; }
 
     .news-item {
       display: grid;
@@ -479,91 +487,41 @@
     }
 
     @media (max-width: 960px) {
-      .site-header {
-        padding: 0 20px;
-      }
-
-      .brand-text {
-        display: none;
-      }
-
-      .nav {
-        gap: 16px;
-        font-size: 12px;
-      }
-
+      .site-header { padding: 0 20px; }
+      .brand-text { display: none; }
+      .nav { gap: 16px; font-size: 12px; }
       .hero {
         min-height: 420px;
         background-size: max(960px, 100vw) auto;
         background-position: center center;
       }
-
       .intro-strip {
         grid-template-columns: 1fr;
         gap: 22px;
       }
-
-      .intro-actions {
-        justify-content: flex-start;
-      }
-
-      .projects,
-      .lower-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
+      .intro-actions { justify-content: flex-start; }
+      .category-grid,
+      .lower-grid { grid-template-columns: 1fr; }
+      .section { padding-left: 18px; padding-right: 18px; }
     }
 
     @media (max-width: 640px) {
-      .site-header {
-        height: 62px;
-      }
-
-      .nav a:nth-child(n+4) {
-        display: none;
-      }
-
+      .site-header { height: 62px; }
+      .nav a:nth-child(n+4) { display: none; }
       .hero {
         min-height: 330px;
         background-size: 980px auto;
         background-position: center center;
       }
-
-      .intro-strip {
-        padding: 36px 20px 8px;
-      }
-
-      h1 {
-        font-size: 36px;
-      }
-
-      .tagline {
-        letter-spacing: 0.16em;
-      }
-
-      .intro-actions {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .news-item {
-        grid-template-columns: 1fr 18px;
-      }
-
-      .news-item time {
-        grid-column: 1 / -1;
-      }
-
-      .site-footer {
-        padding: 26px 22px;
-      }
+      .intro-strip { padding: 36px 20px 8px; }
+      h1 { font-size: 36px; }
+      .tagline { letter-spacing: 0.16em; }
+      .intro-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .category-grid { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr 18px; }
+      .news-item time { grid-column: 1 / -1; }
+      .site-footer { padding: 26px 22px; }
     }
   </style>
 </head>
@@ -609,10 +567,11 @@
 
     <section class="section" id="games">
       <div class="section-title">
-        <h2>Featured</h2>
+        <h2>Games</h2>
+        <p class="note">Interactive worlds</p>
       </div>
 
-      <div class="projects">
+      <div class="category-grid games-grid">
         <article class="card sw">
           <div class="card-inner">
             <div>
@@ -627,8 +586,17 @@
             <a class="card-link" href="#">View on Steam <span>›</span></a>
           </div>
         </article>
+      </div>
+    </section>
 
-        <article class="card context" id="tools">
+    <section class="section compact" id="tools">
+      <div class="section-title">
+        <h2>Tools</h2>
+        <p class="note">Creative workflow</p>
+      </div>
+
+      <div class="category-grid tools-grid">
+        <article class="card context">
           <div class="card-inner">
             <div>
               <span class="label">AI Creative Tool</span>
